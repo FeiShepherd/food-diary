@@ -8,6 +8,8 @@ import HomeScreen from '../screens/HomeScreen'
 import StatsScreen from '../screens/StatsScreen'
 import SettingsScreen from '../screens/SettingsScreen'
 
+import colors from '../constants/Colors'
+
 const config = Platform.select({
   web: {headerMode: 'screen'},
   default: {},
@@ -32,13 +34,16 @@ HomeStack.navigationOptions = {
       }
     />
   ),
+  tabBarOptions: {
+    activeTintColor: colors.tabIconSelected,
+  },
 }
 
 HomeStack.path = ''
 
-const StatsStack= createStackNavigator(
+const StatsStack = createStackNavigator(
   {
-    Stats : StatsScreen,
+    Stats: StatsScreen,
   },
   config,
 )
@@ -51,6 +56,9 @@ StatsStack.navigationOptions = {
       name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'}
     />
   ),
+  tabBarOptions: {
+    activeTintColor: colors.tabIconSelected,
+  },
 }
 
 StatsStack.path = ''
@@ -70,6 +78,9 @@ SettingsStack.navigationOptions = {
       name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'}
     />
   ),
+  tabBarOptions: {
+    activeTintColor: colors.tabIconSelected,
+  },
 }
 
 SettingsStack.path = ''
