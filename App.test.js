@@ -27,14 +27,6 @@ describe('App', () => {
     NavigationTestUtils.resetInternalState()
   })
 
-  it(`tes`, () => {
-    const {getByTestId} = render(<App />)
-    act(() => {
-      getByTestId('AppLoading').props.onFinish()
-    })
-    expect(getByTestId('AppView')).toBeDefined()
-  })
-
   it(`renders the loading screen`, () => {
     const tree = renderer.create(<App />).toJSON()
     expect(tree).toMatchSnapshot()
@@ -54,6 +46,14 @@ describe('App', () => {
     })
 
     expect(getByTestId('AppNavigator')).toBeDefined()
+  })
+
+  it(`renders view after loading`, () => {
+    const {getByTestId} = render(<App />)
+    act(() => {
+      getByTestId('AppLoading').props.onFinish()
+    })
+    expect(getByTestId('AppView')).toBeDefined()
   })
 
   it(`sets setLoadingComplete with true`, () => {
