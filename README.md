@@ -7,6 +7,7 @@ Simple React-Native App that keeps track of food and feelings.
   - Calender - not finished
   - Statistics - not finished
   - Account - not finished
+  - Insert - not finished
 
 ### Installation
 
