@@ -39,11 +39,13 @@ export default function AuthPage(props) {
             icon="google"
             mode="contained"
             color="white"
+            testID="googleButton"
             style={styles.authButton}
             onPress={handleSocialPress}>
             Login With Google
           </Button>
           <Button
+            testID="facebookButton"
             icon="facebook"
             mode="contained"
             color="blue"

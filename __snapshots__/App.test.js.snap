@@ -76,6 +76,7 @@ exports[`App renders the root without loading screen 1`] = `
             "shadowRadius": 1.5,
           }
         }
+        testID="googleButton"
       >
         <View
           accessibilityRole="button"
@@ -183,6 +184,7 @@ exports[`App renders the root without loading screen 1`] = `
             "shadowRadius": 1.5,
           }
         }
+        testID="facebookButton"
       >
         <View
           accessibilityRole="button"
