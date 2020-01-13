@@ -5,6 +5,7 @@ exports[`App renders the loading screen 1`] = `
   onError={[Function]}
   onFinish={[Function]}
   startAsync={[Function]}
+  testID="AppLoading"
 />
 `;
 
@@ -16,6 +17,7 @@ exports[`App renders the root without loading screen 1`] = `
       "flex": 1,
     }
   }
+  testID="AppView"
 >
   <View
     style={

@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TabBarIcon renders correctly 1`] = `<Text />`;
+
+exports[`TabBarIcon renders correctly with Focused 1`] = `<Text />`;

@@ -15,6 +15,7 @@ export default function App(props) {
   if (!isLoadingComplete && !props.skipLoadingScreen) {
     return (
       <AppLoading
+        testID='AppLoading'
         startAsync={loadResourcesAsync}
         onError={handleLoadingError}
         onFinish={() => handleFinishLoading(setLoadingComplete)}
@@ -22,10 +23,10 @@ export default function App(props) {
     )
   } else {
     return (
-      <View style={styles.container}>
+      <View testID="AppView" style={styles.container}>
         {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
         {isAuthComplete ? (
-          <AppNavigator />
+          <AppNavigator testID="AppNavigator"/>
         ) : (
           <AuthPage setAuthComplete={setAuthComplete} />
         )}
@@ -66,3 +67,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
 })
+
+export {
+  App as App,
+  handleLoadingError,
+  handleFinishLoading,
+  loadResourcesAsync
+}
