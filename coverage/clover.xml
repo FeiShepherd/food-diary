@@ -1,24 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1578901264795" clover="3.2.0">
-  <project timestamp="1578901264795" name="All files">
-    <metrics statements="47" coveredstatements="6" conditionals="20" coveredconditionals="6" methods="17" coveredmethods="2" elements="84" coveredelements="14" complexity="0" loc="47" ncloc="47" packages="5" files="15" classes="15"/>
+<coverage generated="1578922878578" clover="3.2.0">
+  <project timestamp="1578922878578" name="All files">
+    <metrics statements="62" coveredstatements="11" conditionals="24" coveredconditionals="8" methods="24" coveredmethods="3" elements="110" coveredelements="22" complexity="0" loc="62" ncloc="62" packages="5" files="17" classes="17"/>
     <package name="food-diary">
-      <metrics statements="9" coveredstatements="5" conditionals="6" coveredconditionals="6" methods="5" coveredmethods="1"/>
+      <metrics statements="10" coveredstatements="6" conditionals="8" coveredconditionals="7" methods="5" coveredmethods="1"/>
       <file name="App.js" path="/home/fe/Projects/food-diary/App.js">
-        <metrics statements="9" coveredstatements="5" conditionals="6" coveredconditionals="6" methods="5" coveredmethods="1"/>
-        <line num="11" count="2" type="stmt"/>
-        <line num="13" count="2" type="cond" truecount="4" falsecount="0"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="22" count="1" type="stmt"/>
-        <line num="32" count="0" type="stmt"/>
-        <line num="50" count="0" type="stmt"/>
-        <line num="54" count="0" type="stmt"/>
-        <line num="57" count="1" type="stmt"/>
+        <metrics statements="10" coveredstatements="6" conditionals="8" coveredconditionals="7" methods="5" coveredmethods="1"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="15" count="2" type="cond" truecount="4" falsecount="0"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="56" count="0" type="stmt"/>
+        <line num="60" count="0" type="stmt"/>
+        <line num="63" count="1" type="stmt"/>
       </file>
     </package>
     <package name="food-diary.components">
-      <metrics statements="2" coveredstatements="1" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="1"/>
+      <metrics statements="9" coveredstatements="5" conditionals="4" coveredconditionals="1" methods="5" coveredmethods="2"/>
+      <file name="AuthPage.js" path="/home/fe/Projects/food-diary/components/AuthPage.js">
+        <metrics statements="7" coveredstatements="4" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="1"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="66" count="1" type="stmt"/>
+        <line num="70" count="1" type="stmt"/>
+      </file>
       <file name="StyledText.js" path="/home/fe/Projects/food-diary/components/StyledText.js">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="5" count="1" type="stmt"/>
@@ -59,22 +70,32 @@
         <line num="37" count="0" type="stmt"/>
         <line num="39" count="0" type="stmt"/>
         <line num="46" count="0" type="stmt"/>
-        <line num="49" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="53" count="0" type="stmt"/>
-        <line num="55" count="0" type="stmt"/>
-        <line num="62" count="0" type="stmt"/>
-        <line num="65" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="69" count="0" type="stmt"/>
-        <line num="71" count="0" type="stmt"/>
+        <line num="49" count="0" type="stmt"/>
+        <line num="56" count="0" type="stmt"/>
+        <line num="58" count="0" type="stmt"/>
+        <line num="65" count="0" type="stmt"/>
+        <line num="68" count="0" type="stmt"/>
+        <line num="75" count="0" type="stmt"/>
         <line num="77" count="0" type="stmt"/>
+        <line num="83" count="0" type="stmt"/>
       </file>
     </package>
     <package name="food-diary.screens">
-      <metrics statements="16" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="7" coveredmethods="0"/>
+      <metrics statements="23" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="11" coveredmethods="0"/>
       <file name="AuthScreen.js" path="/home/fe/Projects/food-diary/screens/AuthScreen.js">
-        <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
+        <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="48" count="0" type="stmt"/>
+        <line num="52" count="0" type="stmt"/>
+        <line num="91" count="0" type="stmt"/>
+      </file>
+      <file name="AuthScreen2.js" path="/home/fe/Projects/food-diary/screens/AuthScreen2.js">
+        <metrics statements="5" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="44" count="0" type="stmt"/>
+        <line num="48" count="0" type="stmt"/>
       </file>
       <file name="CalenderScreen.js" path="/home/fe/Projects/food-diary/screens/CalenderScreen.js">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
