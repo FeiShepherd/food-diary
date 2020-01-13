@@ -5,7 +5,7 @@ import {createBottomTabNavigator} from 'react-navigation-tabs'
 
 import TabBarIcon from '../components/TabBarIcon'
 import HomeScreen from '../screens/HomeScreen'
-import LinksScreen from '../screens/LinksScreen'
+import StatsScreen from '../screens/StatsScreen'
 import SettingsScreen from '../screens/SettingsScreen'
 
 const config = Platform.select({
@@ -36,14 +36,14 @@ HomeStack.navigationOptions = {
 
 HomeStack.path = ''
 
-const LinksStack = createStackNavigator(
+const StatsStack= createStackNavigator(
   {
-    Links: LinksScreen,
+    Stats : StatsScreen,
   },
   config,
 )
 
-LinksStack.navigationOptions = {
+StatsStack.navigationOptions = {
   tabBarLabel: 'Links',
   tabBarIcon: ({focused}) => (
     <TabBarIcon
@@ -53,7 +53,7 @@ LinksStack.navigationOptions = {
   ),
 }
 
-LinksStack.path = ''
+StatsStack.path = ''
 
 const SettingsStack = createStackNavigator(
   {
@@ -76,7 +76,7 @@ SettingsStack.path = ''
 
 const tabNavigator = createBottomTabNavigator({
   HomeStack,
-  LinksStack,
+  StatsStack,
   SettingsStack,
 })
 
