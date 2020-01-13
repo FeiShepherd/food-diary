@@ -1,5 +1,6 @@
 # Food Diary
-
+[![Build Status](https://travis-ci.com/FeiShepherd/food-diary.svg?branch=master)](https://travis-ci.com/FeiShepherd/food-diary) 
+[![Coverage Status](https://coveralls.io/repos/github/feishepherd/food-diary/badge.svg?branch=master)](https://coveralls.io/repos/github/feishepherd/food-diary?branch=master)  
 Simple React-Native App that keeps track of food and feelings.
 ### Screens
   - Auth - not finished
