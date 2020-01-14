@@ -8,6 +8,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  StatusBar,
 } from 'react-native'
 
 import {MonoText} from '../components/StyledText'
@@ -17,28 +18,24 @@ import CalendarStrip from 'react-native-calendar-strip'
 export default function HomeScreen() {
   return (
     <View style={styles.container}>
-      <ScrollView
-        style={styles.container}
-        contentContainerStyle={styles.contentContainer}>
-        <CalendarStrip
-          calendarAnimation={{type: 'sequence', duration: 30}}
-          daySelectionAnimation={{
-            type: 'background',
-            duration: 200,
-            highlightColor: colors.calenderHighlight
-          }}
-          style={{height: 100, paddingTop: 20, paddingBottom: 10}}
-          calendarHeaderStyle={{color: 'white'}}
-          calendarColor={colors.calenderBackground}
-          dateNumberStyle={{color: 'white'}}
-          dateNameStyle={{color: 'white'}}
-          highlightDateNumberStyle={{color: 'white'}}
-          highlightDateNameStyle={{color: 'white'}}
-          disabledDateNameStyle={{color: 'grey'}}
-          disabledDateNumberStyle={{color: 'grey'}}
-          iconContainer={{flex: 0.1}}
-        />
-      </ScrollView>
+      <CalendarStrip
+        style={styles.calender}
+        calendarAnimation={{type: 'sequence', duration: 30}}
+        daySelectionAnimation={{
+          type: 'background',
+          duration: 200,
+          highlightColor: colors.calenderBorder,
+        }}
+        calendarHeaderStyle={{color: colors.calenderHighlight}}
+        calendarColor={colors.calenderBackground}
+        dateNumberStyle={{color: colors.calenderStyle}}
+        dateNameStyle={{color: colors.calenderStyle}}
+        highlightDateNumberStyle={{color: colors.calenderHighlight}}
+        highlightDateNameStyle={{color: colors.calenderHighlight}}
+        disabledDateNameStyle={{color: colors.calenderDisabled}}
+        disabledDateNumberStyle={{color: colors.calenderDisabled}}
+        iconContainer={{flex: 0.1}}
+      />
     </View>
   )
 }
@@ -51,5 +48,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.homeBackground,
+  },
+  calender: {
+    height: 100,
+    paddingTop: 10,
+    paddingBottom: 10,
   },
 })

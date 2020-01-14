@@ -1,14 +1,24 @@
-const tintColor = '#A54657'
+const tintColor = '#0B2A4F'
 
-export default {
-  tintColor,
+const calender = {
+  calenderBorder: '#ffffff1f',
+  calenderBackground: '#3C5C82',
+  calenderStyle: '#9CADC1',
+  calenderHighlight: 'white',
+  calenderDisabled: 'white',
+}
 
+const navigation = {
   tabIconDefault: '#ccc',
   tabIconSelected: tintColor,
   tabBar: '#fefefe',
-  calenderHighlight: '#ffffff4f',
-  calenderBackground: '#582630',
-  homeBackground: '#F1A66A',
+}
+
+export default {
+  tintColor,
+  ...calender,
+  ...navigation,
+  homeBackground: 'white',
   errorBackground: 'red',
   errorText: '#fff',
   warningBackground: '#EAEB5E',
