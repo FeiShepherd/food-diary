@@ -9,14 +9,14 @@ import {
   Colors,
 } from 'react-native-paper'
 
-export default function AuthPage(props) {
+import {connect} from 'react-redux'
+import {FakeLogin} from './AuthPage.actions'
+
+const _AuthPage = props => {
   const [isLoadingComplete, setLoadingComplete] = useState(false)
   function handleSocialPress() {
-    //TODO: Add real social media authentication
-    setLoadingComplete(true)
-    setTimeout(() => {
-      props.setAuthComplete(true)
-    }, 1500)
+    const {FakeLogin} = props
+    FakeLogin()
   }
 
   return (
@@ -65,7 +65,7 @@ export default function AuthPage(props) {
   )
 }
 
-AuthPage.navigationOptions = {
+_AuthPage.navigationOptions = {
   header: null,
 }
 
@@ -109,3 +109,16 @@ const styles = StyleSheet.create({
     marginBottom: 50,
   },
 })
+
+const mapStateToProps = state => ({
+  isLoading: state.auth.isLoading,
+  token: state.auth.token,
+})
+
+const mapDispatchToProps = {
+  FakeLogin,
+}
+
+const AuthPage = connect(mapStateToProps, mapDispatchToProps)(_AuthPage)
+
+export default AuthPage

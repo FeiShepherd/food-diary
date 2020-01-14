@@ -10,8 +10,7 @@ import {Provider} from 'react-redux'
 import {PersistGate} from 'redux-persist/es/integration/react'
 import configureStore from './app/store'
 
-import AuthPage from './components/AuthPage'
-import AppNavigator from './navigation/AppNavigator'
+import AppContainer from './components/AppContainer'
 
 const {persistor, store} = configureStore()
 
@@ -32,14 +31,7 @@ export default function App(props) {
     return (
       <Provider store={store}>
         <PersistGate persistor={persistor}>
-          <View testID="AppView" style={styles.container}>
-            {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-            {isAuthComplete ? (
-              <AppNavigator testID="AppNavigator" />
-            ) : (
-              <AuthPage setAuthComplete={setAuthComplete} />
-            )}
-          </View>
+          <AppContainer />
         </PersistGate>
       </Provider>
     )
@@ -53,11 +45,7 @@ async function loadResourcesAsync() {
       require('./assets/images/robot-prod.png'),
     ]),
     Font.loadAsync({
-      // This is the font that we are using for our tab bar
       ...Ionicons.font,
-      // We include SpaceMono because we use it in HomeScreen.js. Feel free to
-      // remove this if you are not using it in your app
-      'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
     }),
   ])
 }
@@ -69,6 +57,7 @@ function handleLoadingError(error) {
 }
 
 function handleFinishLoading(setLoadingComplete) {
+  console.log('finished')
   setLoadingComplete(true)
 }
 

@@ -11,6 +11,7 @@ import App, {
 import {Asset} from 'expo-asset'
 import * as Font from 'expo-font'
 
+
 jest.mock('expo-asset')
 jest.mock('expo-font')
 

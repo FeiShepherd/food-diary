@@ -9,6 +9,7 @@
     "test": "jest --watchAll --verbose",
     "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls"
   },
+  "type": "module",
   "jest": {
     "preset": "jest-expo",
     "collectCoverage": true,
@@ -45,6 +46,7 @@
     "react-navigation-tabs": "~2.6.2",
     "react-redux": "^7.1.3",
     "redux": "^4.0.5",
+    "redux-logger": "^3.0.6",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.3.0"
   },
@@ -52,6 +54,7 @@
     "@babel/core": "^7.0.0",
     "babel-preset-expo": "~8.0.0",
     "coveralls": "^3.0.9",
+    "jest": "^24.9.0",
     "jest-expo": "~36.0.1",
     "react-native-testing-library": "^1.12.0"
   },
