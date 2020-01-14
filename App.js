@@ -5,8 +5,15 @@ import React, {useState} from 'react'
 import {Platform, StatusBar, StyleSheet, View} from 'react-native'
 import {Ionicons} from '@expo/vector-icons'
 
+//redux
+import {Provider} from 'react-redux'
+import {PersistGate} from 'redux-persist/es/integration/react'
+import configureStore from './app/store'
+
 import AuthPage from './components/AuthPage'
 import AppNavigator from './navigation/AppNavigator'
+
+const {persistor, store} = configureStore()
 
 export default function App(props) {
   const [isLoadingComplete, setLoadingComplete] = useState(false)
@@ -15,7 +22,7 @@ export default function App(props) {
   if (!isLoadingComplete && !props.skipLoadingScreen) {
     return (
       <AppLoading
-        testID='AppLoading'
+        testID="AppLoading"
         startAsync={loadResourcesAsync}
         onError={handleLoadingError}
         onFinish={() => handleFinishLoading(setLoadingComplete)}
@@ -23,14 +30,18 @@ export default function App(props) {
     )
   } else {
     return (
-      <View testID="AppView" style={styles.container}>
-        {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-        {isAuthComplete ? (
-          <AppNavigator testID="AppNavigator"/>
-        ) : (
-          <AuthPage setAuthComplete={setAuthComplete} />
-        )}
-      </View>
+      <Provider store={store}>
+        <PersistGate persistor={persistor}>
+          <View testID="AppView" style={styles.container}>
+            {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+            {isAuthComplete ? (
+              <AppNavigator testID="AppNavigator" />
+            ) : (
+              <AuthPage setAuthComplete={setAuthComplete} />
+            )}
+          </View>
+        </PersistGate>
+      </Provider>
     )
   }
 }
@@ -68,9 +79,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export {
-  App as App,
-  handleLoadingError,
-  handleFinishLoading,
-  loadResourcesAsync
-}
+export {App, handleLoadingError, handleFinishLoading, loadResourcesAsync}

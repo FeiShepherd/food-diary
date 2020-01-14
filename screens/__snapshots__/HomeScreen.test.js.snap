@@ -4,7 +4,7 @@ exports[`Home Screen renders the home screen 1`] = `
 <View
   style={
     Object {
-      "backgroundColor": "#9CADC1",
+      "backgroundColor": "white",
       "flex": 1,
     }
   }
@@ -258,7 +258,7 @@ exports[`Home Screen renders the home screen 1`] = `
                         "backgroundColor": "transparent",
                       },
                       Object {
-                        "backgroundColor": "white",
+                        "backgroundColor": "#ffffff1f",
                       },
                     ],
                   ]
@@ -298,7 +298,7 @@ exports[`Home Screen renders the home screen 1`] = `
                             "textAlign": "center",
                           },
                           Object {
-                            "color": undefined,
+                            "color": "white",
                           },
                         ],
                       ]
