@@ -10,7 +10,8 @@ import {
 } from 'react-native-paper'
 
 import {connect} from 'react-redux'
-import {FakeLogin} from './AuthPage.actions'
+import {FakeLogin} from '../../store/auth/actions'
+
 
 const _AuthPage = props => {
   const [isLoadingComplete, setLoadingComplete] = useState(false)
@@ -22,11 +23,11 @@ const _AuthPage = props => {
   return (
     <View style={styles.container}>
       <Image
-        source={require('../assets/images/logo2.png')}
+        source={require('../../assets/images/logo2.png')}
         style={styles.logoImage}
       />
       <Image
-        source={require('../assets/images/welcome-food.jpg')}
+        source={require('../../assets/images/welcome-food.jpg')}
         style={styles.welcomeImage}
       />
       {isLoadingComplete ? (

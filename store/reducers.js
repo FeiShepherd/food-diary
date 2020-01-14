@@ -1,4 +1,4 @@
-import auth from '../components/AuthPage.reducers'
+import auth from './auth/reducers'
 
 const rehydrated = (state = false, action) => {
   switch (action.type) {

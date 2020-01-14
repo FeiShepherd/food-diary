@@ -1,6 +1,6 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import AuthPage from './AuthPage'
+import AuthPage from './index.js'
 import {render, fireEvent} from 'react-native-testing-library'
 
 describe('Auth Page', () => {

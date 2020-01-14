@@ -8,7 +8,7 @@ import {Ionicons} from '@expo/vector-icons'
 //redux
 import {Provider} from 'react-redux'
 import {PersistGate} from 'redux-persist/es/integration/react'
-import configureStore from './app/store'
+import configureStore from './store'
 
 import AppContainer from './components/AppContainer'
 
@@ -57,7 +57,6 @@ function handleLoadingError(error) {
 }
 
 function handleFinishLoading(setLoadingComplete) {
-  console.log('finished')
   setLoadingComplete(true)
 }
 
