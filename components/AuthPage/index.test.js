@@ -2,34 +2,60 @@ import React from 'react'
 import renderer from 'react-test-renderer'
 import AuthPage from './index.js'
 import {render, fireEvent} from 'react-native-testing-library'
+import {Provider} from 'react-redux'
+import configureStore from 'redux-mock-store'
+
+import {FakeLogin} from '../../store/auth/actions'
+jest.mock('../../store/auth/actions')
+
+const mockStore = configureStore([])
 
 describe('Auth Page', () => {
   jest.useFakeTimers()
-  //Use timer because buttons use a timeout then call setAuthComplete
+
+  beforeEach(() => {
+    store = mockStore({
+      auth: {isLoading: false, token: false},
+    })
+  })
 
   it(`renders correctly`, () => {
-    const tree = renderer.create(<AuthPage />).toJSON()
+    const tree = renderer
+      .create(
+        <Provider store={store}>
+          <AuthPage />
+        </Provider>,
+      )
+      .toJSON()
 
     expect(tree).toMatchSnapshot()
   })
 
-  it('should call setAuthComplete onPress of Facebook Button', () => {
-    const setAuthComplete = jest.fn()
-    const {getByTestId} = render(<AuthPage setAuthComplete={setAuthComplete} />)
+  it('dispatches FakeLogin function on Facebook Button Click', () => {
+    store.dispatch = jest.fn()
+    const {getByTestId} = render(
+      <Provider store={store}>
+        <AuthPage />
+      </Provider>,
+    )
 
     fireEvent(getByTestId('facebookButton'), 'onPress', true)
-    //console.log(setTimeout.mock.calls[1][0].toString())
     jest.runAllTimers()
-    expect(setAuthComplete).toBeCalled()
+    expect(store.dispatch).toHaveBeenCalledTimes(1)
+    expect(store.dispatch).toHaveBeenCalledWith(FakeLogin())
   })
 
-  it('should call setAuthComplete onPress of Google Button', () => {
-    const setAuthComplete = jest.fn()
-    const {getByTestId} = render(<AuthPage setAuthComplete={setAuthComplete} />)
+  it('dispatches FakeLogin function on Google Button Click', () => {
+    store.dispatch = jest.fn()
+    const {getByTestId} = render(
+      <Provider store={store}>
+        <AuthPage />
+      </Provider>,
+    )
 
-    fireEvent(getByTestId('facebookButton'), 'onPress', true)
-    //console.log(setTimeout.mock.calls[1][0].toString())
+    fireEvent(getByTestId('googleButton'), 'onPress', true)
     jest.runAllTimers()
-    expect(setAuthComplete).toBeCalled()
+    expect(store.dispatch).toHaveBeenCalledTimes(1)
+    expect(store.dispatch).toHaveBeenCalledWith(FakeLogin())
   })
 })
