@@ -17,15 +17,18 @@ export default function auth(state = initialState, action) {
       return state
     }
     case 'USER_LOGOUT': {
-      if (action.data) {
-        return {
-          ...state,
-          isLoading: false,
-          token: false,
-        }
+      return {
+        ...state,
+        isLoading: false,
+        token: false,
       }
+    }
 
-      return state
+    case 'USER_LOADING': {
+      return {
+        ...state,
+        isLoading: true,
+      }
     }
 
     default:

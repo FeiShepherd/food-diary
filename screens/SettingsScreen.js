@@ -1,14 +1,26 @@
-import React from 'react';
-import { ExpoConfigView } from '@expo/samples';
+import React from 'react'
+import {ExpoConfigView} from '@expo/samples'
+import {View} from 'react-native'
+import {Button} from 'react-native-paper'
+import {connect} from 'react-redux'
+import {FakeLogout} from '../store/auth/actions'
 
-export default function SettingsScreen() {
-  /**
-   * Go ahead and delete ExpoConfigView and replace it with your content;
-   * we just wanted to give you a quick view of your config.
-   */
-  return <ExpoConfigView />;
+const _SettingsScreen = props => {
+  return (
+    <View>
+      <Button onPress={props.FakeLogout}>Logout</Button>
+    </View>
+  )
 }
 
-SettingsScreen.navigationOptions = {
-  title: 'app.json',
-};
+_SettingsScreen.navigationOptions = {
+  header: null,
+}
+
+const mapDispatchToProps = {
+  FakeLogout,
+}
+
+const SettingsScreen = connect(null, mapDispatchToProps)(_SettingsScreen)
+
+export default SettingsScreen

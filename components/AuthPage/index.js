@@ -14,12 +14,6 @@ import {FakeLogin} from '../../store/auth/actions'
 
 
 const _AuthPage = props => {
-  const [isLoadingComplete, setLoadingComplete] = useState(false)
-  function handleSocialPress() {
-    const {FakeLogin} = props
-    FakeLogin()
-  }
-
   return (
     <View style={styles.container}>
       <Image
@@ -30,7 +24,7 @@ const _AuthPage = props => {
         source={require('../../assets/images/welcome-food.jpg')}
         style={styles.welcomeImage}
       />
-      {isLoadingComplete ? (
+      {props.isLoading? (
         <View style={styles.authContainer}>
           <ActivityIndicator animating={true} color={Colors.red800} />
         </View>
@@ -42,7 +36,7 @@ const _AuthPage = props => {
             color="white"
             testID="googleButton"
             style={styles.authButton}
-            onPress={handleSocialPress}>
+            onPress={props.FakeLogin}>
             Login With Google
           </Button>
           <Button
@@ -51,7 +45,7 @@ const _AuthPage = props => {
             mode="contained"
             color="blue"
             style={styles.authButton}
-            onPress={handleSocialPress}>
+            onPress={props.FakeLogin}>
             Login With Facebook
           </Button>
         </View>
