@@ -11,7 +11,16 @@ import {
   StatusBar,
 } from 'react-native'
 
-import {Chip, Button, Card, Title, Paragraph} from 'react-native-paper'
+import {
+  TextInput,
+  List,
+  Chip,
+  Button,
+  Card,
+  Title,
+  Paragraph,
+  FAB,
+} from 'react-native-paper'
 import {MonoText} from '../components/StyledText'
 import colors from '../constants/Colors'
 import CalendarStrip from 'react-native-calendar-strip'
@@ -41,48 +50,157 @@ const _HomeScreen = props => {
         disabledDateNumberStyle={{color: colors.calenderDisabled}}
         iconContainer={{flex: 0.1}}
       />
-      <Card style={styles.card}>
-        <Card.Title subtitle={moment(props.selectedDate).format('MMM Do YY')} />
-        <Card.Content>
-          <Title>Food</Title>
-          <View style={styles.foodContainer}>
-            <Chip
-              style={styles.chip}
-              mode="outlined"
-              onClose={() => console.log('Pressed')}>
-              Carrots
-            </Chip>
-            <Chip
-              style={styles.chip}
-              mode="outlined"
-              onClose={() => console.log('Pressed')}>
-              Lettuce
-            </Chip>
-          </View>
-        </Card.Content>
-        <Card.Content>
-          <Title>Mood</Title>
-          <Paragraph>carrots</Paragraph>
-        </Card.Content>
-        <Card.Content>
-          <Title>Poop</Title>
-          <Paragraph>carrots</Paragraph>
-        </Card.Content>
-        <Card.Content>
-          <Title>Energy</Title>
-          <Paragraph>carrots</Paragraph>
-        </Card.Content>
-
-        <Card.Actions>
-          <Button
-            widthn
-            icon="floppy"
+      <View style={styles.cardContainer}>
+        <TextInput label="Carrots" onChangeText={text => console.log({text})} />
+        <View style={styles.chipContainer}>
+          <Chip
+            style={styles.chip}
             mode="outlined"
-            onPress={() => console.log('Pressed')}>
-            Save
-          </Button>
-        </Card.Actions>
-      </Card>
+            onClose={() => console.log('Pressed')}>
+            Carrots
+          </Chip>
+          <Chip
+            style={styles.chip}
+            mode="outlined"
+            onClose={() => console.log('Pressed')}>
+            Lettuce
+          </Chip>
+          <Chip
+            style={styles.chip}
+            mode="outlined"
+            onClose={() => console.log('Pressed')}>
+            Burger
+          </Chip>
+          <Chip
+            style={styles.chip}
+            mode="outlined"
+            onClose={() => console.log('Pressed')}>
+            Pepper
+          </Chip>
+          <Chip
+            style={styles.chip}
+            mode="outlined"
+            onClose={() => console.log('Pressed')}>
+            Onions
+          </Chip>
+          <Chip
+            style={styles.chip}
+            mode="outlined"
+            onClose={() => console.log('Pressed')}>
+            Onions
+          </Chip>
+        </View>
+        <Text style={styles.review}>How did you feel today?</Text>
+        <View style={styles.starContainer}>
+          <Button
+            style={styles.star}
+            icon="star"
+            mode="outlined"
+            onPress={() => console.log('Pressed')}></Button>
+
+          <Button
+            style={styles.star}
+            icon="star"
+            mode="outlined"
+            onPress={() => console.log('Pressed')}></Button>
+
+          <Button
+            style={styles.star}
+            icon="star"
+            mode="outlined"
+            onPress={() => console.log('Pressed')}></Button>
+
+          <Button
+            style={styles.star}
+            icon="star"
+            mode="outlined"
+            onPress={() => console.log('Pressed')}></Button>
+
+          <Button
+            style={styles.star}
+            icon="star"
+            mode="outlined"
+            color="grey"
+            onPress={() => console.log('Pressed')}></Button>
+        </View>
+        <Text style={styles.review}>
+          How was your bathroom experience today?
+        </Text>
+        <View style={styles.starContainer}>
+          <Button
+            style={styles.star}
+            icon="star"
+            mode="outlined"
+            onPress={() => console.log('Pressed')}></Button>
+
+          <Button
+            style={styles.star}
+            icon="star"
+            mode="outlined"
+            onPress={() => console.log('Pressed')}></Button>
+
+          <Button
+            style={styles.star}
+            icon="star"
+            mode="outlined"
+            color="grey"
+            onPress={() => console.log('Pressed')}></Button>
+
+          <Button
+            style={styles.star}
+            icon="star"
+            mode="outlined"
+            color="grey"
+            onPress={() => console.log('Pressed')}></Button>
+
+          <Button
+            style={styles.star}
+            icon="star"
+            mode="outlined"
+            color="grey"
+            onPress={() => console.log('Pressed')}></Button>
+        </View>
+
+        <Text style={styles.review}>How was your energy today?</Text>
+        <View style={styles.starContainer}>
+          <Button
+            style={styles.star}
+            icon="star"
+            mode="outlined"
+            onPress={() => console.log('Pressed')}></Button>
+
+          <Button
+            style={styles.star}
+            icon="star"
+            mode="outlined"
+            onPress={() => console.log('Pressed')}></Button>
+
+          <Button
+            style={styles.star}
+            icon="star"
+            mode="outlined"
+            onPress={() => console.log('Pressed')}></Button>
+
+          <Button
+            style={styles.star}
+            icon="star"
+            mode="outlined"
+            onPress={() => console.log('Pressed')}></Button>
+
+          <Button
+            style={styles.star}
+            icon="star"
+            mode="outlined"
+            color="grey"
+            onPress={() => console.log('Pressed')}></Button>
+        </View>
+      </View>
+      <FAB
+        style={styles.fab}
+        medium
+        icon="floppy"
+        onPress={() => console.log('Pressed')}
+      />
     </View>
   )
 }
@@ -106,17 +224,43 @@ const HomeScreen = connect(mapStateToProps, mapDispatchToProps)(_HomeScreen)
 export default HomeScreen
 
 const styles = StyleSheet.create({
+  fab: {
+    position: 'absolute',
+    margin: 16,
+    right: 0,
+    bottom: 0,
+  },
   container: {
     flex: 1,
     backgroundColor: colors.homeBackground,
   },
-  card: {
+  cardContainer: {
     padding: 20,
-    margin: 20,
   },
-  foodContainer: {
+  foodContainer: {},
+  chipContainer: {
+    paddingTop: 15,
+    flexWrap: 'wrap',
+    alignSelf: 'flex-start',
+    flexDirection: 'row',
   },
-  chip: {},
+  starContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  star: {
+    paddingLeft: 14,
+  },
+  review: {
+    color: 'grey',
+    textAlign: 'center',
+    marginTop: 20,
+    letterSpacing: 0.5,
+    marginBottom: 20,
+  },
+  chip: {
+    margin: 2,
+  },
   calender: {
     height: 100,
     paddingTop: 10,

@@ -1,4 +1,5 @@
 import auth from './auth/reducers'
+import calender from './calender/reducers'
 
 const rehydrated = (state = false, action) => {
   switch (action.type) {
@@ -11,5 +12,6 @@ const rehydrated = (state = false, action) => {
 
 export default {
   rehydrated,
-  auth
+  auth,
+  calender
 }
