@@ -51,6 +51,7 @@ class _HomeScreen extends React.Component {
           }}
           setSelectedDate={() => moment().format()}
           onDateSelected={date => {
+            this.setState({foodText:''})
             this.props.setSelectedDate(formatDate(date))
           }}
           calendarHeaderStyle={{color: colors.calenderHighlight}}
@@ -62,6 +63,18 @@ class _HomeScreen extends React.Component {
           disabledDateNameStyle={{color: colors.calenderDisabled}}
           disabledDateNumberStyle={{color: colors.calenderDisabled}}
           iconContainer={{flex: 0.1}}
+          markedDates={Object.keys(this.props.items).map((key, index) => {
+            return {
+              date: convertDate(key),
+              dots: [
+                {
+                  key: `${key}-${index}`,
+                  color: 'green',
+                  selectedDotColor: 'blue',
+                },
+              ],
+            }
+          })}
         />
         <View style={styles.cardContainer}>
           <View style={styles.formContainer}>
@@ -74,29 +87,34 @@ class _HomeScreen extends React.Component {
               icon="plus"
               style={styles.addInput}
               mode="contained"
-              onPress={() => this.props.addFood(this.state.foodText)}>
+              onPress={() => {
+                this.props.addFood(this.state.foodText)
+                this.setState({foodText: ''})
+              }}>
               Add
             </Button>
           </View>
-          <View style={styles.chipContainer}>
-            {this.props.selectedDate &&
-            this.props.selectedDate in this.props.items
-              ? this.props.items[this.props.selectedDate].foods.map(
-                  (food, index) => {
-                    return (
-                      <Chip
-                        key={index}
-                        style={styles.chip}
-                        textStyle={styles.chipText}
-                        mode="outlined"
-                        onClose={() => console.log('Pressed')}>
-                        {food}
-                      </Chip>
-                    )
-                  },
-                )
-              : null}
-          </View>
+          <ScrollView style={styles.scrollView}>
+            <View style={styles.chipContainer}>
+              {this.props.selectedDate &&
+              this.props.selectedDate in this.props.items
+                ? this.props.items[this.props.selectedDate].foods.map(
+                    (food, index) => {
+                      return (
+                        <Chip
+                          key={index}
+                          style={styles.chip}
+                          textStyle={styles.chipText}
+                          mode="outlined"
+                          onClose={() => console.log('Pressed')}>
+                          {food}
+                        </Chip>
+                      )
+                    },
+                  )
+                : null}
+            </View>
+          </ScrollView>
           {this.props.selectedDate &&
           this.props.selectedDate in this.props.items ? (
             <View>
@@ -120,17 +138,6 @@ class _HomeScreen extends React.Component {
             </View>
           ) : null}
         </View>
-        <FAB
-          style={styles.fab}
-          medium
-          icon="floppy"
-          onPress={() =>
-            this.props.addItem({
-              reviews: props.reviews,
-              date: props.selectedDate,
-            })
-          }
-        />
       </View>
     )
   }
@@ -140,8 +147,13 @@ _HomeScreen.navigationOptions = {
   header: null,
 }
 
+const convertDate = date => {
+  console.log(date)
+  return moment(date).format()
+}
+
 const formatDate = date => {
-  return moment(date).format('MMDDYYYY')
+  return moment(date).format('LL')
 }
 
 const mapStateToProps = state => ({

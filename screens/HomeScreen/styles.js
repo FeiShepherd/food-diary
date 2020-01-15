@@ -4,7 +4,7 @@ import colors from '../../constants/Colors'
 module.exports = StyleSheet.create({
   formContainer: {
     flexDirection: 'row',
-    alignSelf: 'flex-start'
+    alignSelf: 'flex-start',
   },
   textInput: {
     flex:10,
@@ -28,12 +28,17 @@ module.exports = StyleSheet.create({
   cardContainer: {
     padding: 20,
   },
+  scrollView: {
+    backgroundColor: '#cccccc',
+    height: 100,
+  },
   foodContainer: {},
   chipContainer: {
     paddingTop: 15,
     flexWrap: 'wrap',
     alignSelf: 'flex-start',
     flexDirection: 'row',
+    height: 100,
   },
   starContainer: {
     flexDirection: 'row',
