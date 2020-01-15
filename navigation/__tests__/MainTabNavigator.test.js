@@ -1,9 +1,9 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 import {render, fireEvent, act} from 'react-native-testing-library'
-import AppNavigator from './AppNavigator'
+import AppNavigator from '../AppNavigator'
 import {createSwitchNavigator} from 'react-navigation'
-import MainTabNavigator from './MainTabNavigator'
+import MainTabNavigator from '../MainTabNavigator'
 
 describe('Home Screen', () => {
   it(`has 3 routes for navigation`, () => {

@@ -1,7 +1,7 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 import {render, fireEvent, act} from 'react-native-testing-library'
-import SettingsScreen from './SettingsScreen.js'
+import SettingsScreen from '../index.js'
 
 describe('Settings Screen', () => {
   it(`renders the settings screen`, () => {

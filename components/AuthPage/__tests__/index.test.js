@@ -1,12 +1,12 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import AuthPage from './index.js'
+import AuthPage from '../index.js'
 import {render, fireEvent} from 'react-native-testing-library'
 import {Provider} from 'react-redux'
 import configureStore from 'redux-mock-store'
 
-import {FakeLogin} from '../../store/auth/actions'
-jest.mock('../../store/auth/actions')
+import {FakeLogin} from '../../../store/auth/actions'
+jest.mock('../../../store/auth/actions')
 
 const mockStore = configureStore([])
 

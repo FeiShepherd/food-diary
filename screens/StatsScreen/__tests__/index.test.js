@@ -1,7 +1,7 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 import {render, fireEvent, act} from 'react-native-testing-library'
-import StatsScreen from './StatsScreen.js'
+import StatsScreen from '../index.js'
 
 describe('Stats Screen', () => {
   it(`renders the Stats screen`, () => {

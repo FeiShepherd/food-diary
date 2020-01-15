@@ -6,7 +6,7 @@ import App, {
   loadResourcesAsync,
   handleLoadingError,
   handleFinishLoading,
-} from './App'
+} from '../App'
 
 import {Asset} from 'expo-asset'
 import * as Font from 'expo-font'
@@ -19,7 +19,7 @@ jest.mock('expo', () => ({
   AppLoading: 'AppLoading',
 }))
 
-jest.mock('./navigation/AppNavigator', () => 'AppNavigator')
+jest.mock('../navigation/AppNavigator', () => 'AppNavigator')
 
 describe('App', () => {
   jest.useFakeTimers()

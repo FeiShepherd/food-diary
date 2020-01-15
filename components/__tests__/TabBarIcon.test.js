@@ -1,7 +1,7 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 
-import TabBarIcon from './TabBarIcon'
+import TabBarIcon from '../TabBarIcon'
 
 describe('TabBarIcon', () => {
   it(`renders correctly`, () => {
