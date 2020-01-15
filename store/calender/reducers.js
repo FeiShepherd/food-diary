@@ -5,6 +5,23 @@ export const initialState = {
 
 export default function calender(state = initialState, action) {
   switch (action.type) {
+    case 'REMOVE_FOOD': {
+      if (action.data) {
+        const {index} = action.data
+        return {
+          ...state,
+          items: {
+            ...state.items,
+            [state.selectedDate]: {
+              ...state.items[state.selectedDate],
+              foods: state.items[state.selectedDate].foods.filter(
+                item => item != state.items[state.selectedDate].foods[index],
+              ),
+            },
+          },
+        }
+      }
+    }
     case 'ADD_FOOD': {
       if (action.data) {
         const {food} = action.data
@@ -15,9 +32,9 @@ export default function calender(state = initialState, action) {
             [state.selectedDate]: {
               ...state.items[state.selectedDate],
               foods: [
-                ...state.items[state.selectedDate].foods || [], //add empty array if doesnt exist, temp fix
-                food
-              ]
+                ...(state.items[state.selectedDate].foods || []), //add empty array if doesnt exist, temp fix
+                food,
+              ],
             },
           },
         }

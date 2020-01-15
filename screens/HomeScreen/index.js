@@ -26,7 +26,12 @@ import colors from '../../constants/Colors'
 import CalendarStrip from 'react-native-calendar-strip'
 import moment from 'moment'
 import {connect} from 'react-redux'
-import {addFood, setReview, setSelectedDate} from '../../store/calender/actions'
+import {
+  removeFood,
+  addFood,
+  setReview,
+  setSelectedDate,
+} from '../../store/calender/actions'
 import styles from './styles.js'
 import ReviewStars from '../../components/ReviewStars'
 
@@ -51,7 +56,7 @@ class _HomeScreen extends React.Component {
           }}
           setSelectedDate={() => moment().format()}
           onDateSelected={date => {
-            this.setState({foodText:''})
+            this.setState({foodText: ''})
             this.props.setSelectedDate(formatDate(date))
           }}
           calendarHeaderStyle={{color: colors.calenderHighlight}}
@@ -106,7 +111,7 @@ class _HomeScreen extends React.Component {
                           style={styles.chip}
                           textStyle={styles.chipText}
                           mode="outlined"
-                          onClose={() => console.log('Pressed')}>
+                          onClose={() => this.props.removeFood(index)}>
                           {food}
                         </Chip>
                       )
@@ -148,7 +153,6 @@ _HomeScreen.navigationOptions = {
 }
 
 const convertDate = date => {
-  console.log(date)
   return moment(date).format()
 }
 
@@ -165,6 +169,7 @@ const mapDispatchToProps = {
   setSelectedDate,
   setReview,
   addFood,
+  removeFood,
 }
 
 const HomeScreen = connect(mapStateToProps, mapDispatchToProps)(_HomeScreen)

@@ -1,3 +1,19 @@
+export function removeFood(index) {
+  return dispatch =>
+    new Promise(async (resolve, reject) => {
+      const payload = {
+        index,
+      }
+
+      return resolve(
+        dispatch({
+          type: 'REMOVE_FOOD',
+          data: payload,
+        }),
+      )
+    })
+}
+
 export function addFood(food) {
   return dispatch =>
     new Promise(async (resolve, reject) => {
