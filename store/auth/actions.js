@@ -1,3 +1,5 @@
+import {resetCalender} from '../calender/actions'
+
 export function FakeLogin() {
   return dispatch =>
     new Promise(async (resolve, reject) => {
@@ -8,7 +10,7 @@ export function FakeLogin() {
 
       dispatch({
         type: 'USER_LOADING',
-        data: null
+        data: null,
       })
 
       setTimeout(() => {
@@ -27,6 +29,7 @@ export function FakeLogin() {
 export function FakeLogout() {
   return dispatch =>
     new Promise(async (resolve, reject) => {
+      dispatch(resetCalender())
       return resolve(
         dispatch({
           type: 'USER_LOGOUT',

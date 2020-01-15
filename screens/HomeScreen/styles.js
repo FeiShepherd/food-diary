@@ -2,6 +2,19 @@ import {StyleSheet} from 'react-native'
 import colors from '../../constants/Colors'
 
 module.exports = StyleSheet.create({
+  formContainer: {
+    flexDirection: 'row',
+    alignSelf: 'flex-start'
+  },
+  textInput: {
+    flex:10,
+    height: 40,
+    fontSize: 13
+  },
+  addInput: {
+    flex:1,
+    backgroundColor: 'blue'
+  },
   fab: {
     position: 'absolute',
     margin: 16,
