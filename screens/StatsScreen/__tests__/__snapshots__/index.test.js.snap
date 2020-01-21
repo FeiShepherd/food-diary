@@ -251,7 +251,7 @@ exports[`Stats Screen renders the Stats screen 1`] = `
               }
             }
           >
-            Blah
+            food-diary
           </Text>
           <Text
             style={

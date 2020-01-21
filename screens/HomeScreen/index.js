@@ -34,6 +34,7 @@ import {
 } from '../../store/calender/actions'
 import styles from './styles.js'
 import ReviewStars from '../../components/ReviewStars'
+import SearchBox from '../../components/SearchBox'
 
 class _HomeScreen extends React.Component {
   constructor(props) {
@@ -44,6 +45,10 @@ class _HomeScreen extends React.Component {
     }
   }
   render() {
+    const renderSearchBox = items => {
+      if (items) return <SearchBox items={items} />
+      return null
+    }
     return (
       <View style={styles.container}>
         <CalendarStrip
@@ -82,6 +87,7 @@ class _HomeScreen extends React.Component {
           })}
         />
         <View style={styles.cardContainer}>
+          {renderSearchBox(this.props.items)}
           <View style={styles.formContainer}>
             <TextInput
               style={styles.textInput}
