@@ -40,13 +40,10 @@ class _HomeScreen extends React.Component {
   constructor(props) {
     super(props)
     this.props.setSelectedDate(formatDate(moment().format()))
-    this.state = {
-      foodText: '',
-    }
   }
   render() {
     const renderSearchBox = items => {
-      if (items) return <SearchBox items={items} />
+      if (items) return <SearchBox items={items} addFood={this.props.addFood} />
       return null
     }
     return (
@@ -88,23 +85,6 @@ class _HomeScreen extends React.Component {
         />
         <View style={styles.cardContainer}>
           {renderSearchBox(this.props.items)}
-          <View style={styles.formContainer}>
-            <TextInput
-              style={styles.textInput}
-              value={this.state.foodText}
-              onChangeText={foodText => this.setState({foodText})}
-            />
-            <Button
-              icon="plus"
-              style={styles.addInput}
-              mode="contained"
-              onPress={() => {
-                this.props.addFood(this.state.foodText)
-                this.setState({foodText: ''})
-              }}>
-              Add
-            </Button>
-          </View>
           <ScrollView style={styles.scrollView}>
             <View style={styles.chipContainer}>
               {this.props.selectedDate &&

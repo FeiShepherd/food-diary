@@ -2,10 +2,10 @@ const tintColor = '#0B2A4F'
 
 const calender = {
   calenderBorder: '#ffffff1f',
-  calenderBackground: '#3C5C82',
+  calenderBackground: 'white',
   calenderStyle: '#9CADC1',
-  calenderHighlight: 'white',
-  calenderDisabled: 'white',
+  calenderHighlight: 'black',
+  calenderDisabled: 'black',
 }
 
 const navigation = {
