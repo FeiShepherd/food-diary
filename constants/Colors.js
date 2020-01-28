@@ -3,7 +3,7 @@ const tintColor = '#0B2A4F'
 const calender = {
   calenderBorder: '#ffffff1f',
   calenderBackground: 'white',
-  calenderStyle: '#9CADC1',
+  calenderStyle: 'grey',
   calenderHighlight: 'black',
   calenderDisabled: 'black',
 }

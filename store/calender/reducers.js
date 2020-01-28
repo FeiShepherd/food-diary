@@ -25,18 +25,22 @@ export default function calender(state = initialState, action) {
     case 'ADD_FOOD': {
       if (action.data) {
         const {food} = action.data
-        return {
-          ...state,
-          items: {
-            ...state.items,
-            [state.selectedDate]: {
-              ...state.items[state.selectedDate],
-              foods: [
-                ...(state.items[state.selectedDate].foods || []), //add empty array if doesnt exist, temp fix
-                food,
-              ],
+        if (state.items[state.selectedDate].foods.indexOf(food) === -1) {
+          return {
+            ...state,
+            items: {
+              ...state.items,
+              [state.selectedDate]: {
+                ...state.items[state.selectedDate],
+                foods: [
+                  ...(state.items[state.selectedDate].foods || []), //add empty array if doesnt exist, temp fix
+                  food,
+                ],
+              },
             },
-          },
+          }
+        } else {
+          return state
         }
       }
       return state

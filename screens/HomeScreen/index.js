@@ -76,7 +76,7 @@ class _HomeScreen extends React.Component {
               dots: [
                 {
                   key: `${key}-${index}`,
-                  color: 'green',
+                  color: 'blue',
                   selectedDotColor: 'blue',
                 },
               ],

@@ -34,7 +34,7 @@ module.exports = StyleSheet.create({
   },
   foodContainer: {},
   chipContainer: {
-    paddingTop: 15,
+    padding: 5,
     flexWrap: 'wrap',
     alignSelf: 'flex-start',
     flexDirection: 'row',
