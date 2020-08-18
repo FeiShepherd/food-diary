@@ -1,0 +1,427 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Digit.ink sdasdsCredentials API",
+    "version": "1.0.0",
+    "description": "An API to issue, manage, and verify self-sovereign identity credentials",
+    "termsOfService": "https://we-need-a-tos.com",
+    "contact": {
+      "name": "Our Team",
+      "url": "https://digit.ink",
+      "email": "help@digit.ink"
+    }
+  },
+  "host": "api.digit.ink",
+  "basePath": "",
+  "components": {
+    "securitySchemes": {
+      "apiAuth": {
+        "type": "apiKey",
+        "in": "query",
+        "name": "apiKey"
+      },
+      "issuerPubKey": {
+        "type": "apiKey",
+        "in": "query",
+        "name": "issuerPubKey"
+      }
+    }
+  },
+  "security": [
+    {
+      "apiAuth": [],
+      "issuerPubKey": []
+    }
+  ],
+  "servers": [
+    {
+      "url": "https://api.digit.ink/v1",
+      "description": "Production server"
+    },
+    {
+      "url": "https://sandbox.digit.ink/v1",
+      "description": "Sandbox Server"
+    },
+    {
+      "url": "http://localhost:3000",
+      "description": "Local Server"
+    }
+  ],
+  "paths": {
+    "/credentials/{credentialUuid}": {
+      "delete": {
+        "description": "Revokes a credential",
+        "summary": "Revoke credential",
+        "tags": [
+          "Credentials"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "credentialUuid",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "Bad request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          },
+          "5XX": {
+            "description": "Unexpected error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/issuers": {
+      "get": {
+        "description": "Get an issuer's profile by ID",
+        "summary": "Get issuer's profile",
+        "tags": [
+          "Issuers"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "0x1204ddd4109cca475a9ba00e798a9d6f0066fe68": {
+                      "properties": {
+                        "templateMap": {
+                          "properties": {
+                            "v2": {
+                              "properties": {
+                                "Diplomas": {
+                                  "properties": {
+                                    "name": {
+                                      "type": "string"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "id": {
+                          "type": "integer"
+                        },
+                        "name": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "issuerName": {
+                      "type": "string"
+                    },
+                    "issuerId": {
+                      "type": "string"
+                    },
+                    "issuerPublicKey": {
+                      "type": "string"
+                    },
+                    "revocationList": {
+                      "type": "string"
+                    },
+                    "issuerEmail": {
+                      "type": "string"
+                    },
+                    "issuerUrl": {
+                      "type": "string"
+                    },
+                    "certCount": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "Bad request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          },
+          "5XX": {
+            "description": "Unexpected error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/templates/{templateId}": {
+      "post": {
+        "description": "Issue credentials using a template and roster file.",
+        "summary": "Issue template",
+        "tags": [
+          "Templates"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "templateId",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "description": "Roster JSON data",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "oneOf": [
+                      {
+                        "type": "object",
+                        "properties": {
+                          "certUrl": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "Bad request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          },
+          "5XX": {
+            "description": "Unexpected error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "description": "Get a list of credentials for a specific template",
+        "summary": "Get credentials",
+        "tags": [
+          "Templates"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "templateId",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Credential"
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "Bad request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          },
+          "5XX": {
+            "description": "Unexpected error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/templates": {
+      "get": {
+        "description": "Get a map of the issuer’s templates",
+        "summary": "Get templates",
+        "tags": [
+          "Templates"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "v2": {
+                      "properties": {
+                        "Diplomas": {
+                          "properties": {
+                            "name": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "Bad request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          },
+          "5XX": {
+            "description": "Unexpected error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/definitions/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Error": {
+      "properties": {
+        "error": {
+          "type": "string"
+        }
+      }
+    },
+    "Credential": {
+      "properties": {
+        "issuedOn": {
+          "type": "string",
+          "description": "Hash of monolithic curve issuer"
+        },
+        "certUrl": {
+          "type": "string",
+          "description": "URL of certificate authority"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Credentials"
+    },
+    {
+      "name": "Issuers"
+    },
+    {
+      "name": "Templates"
+    }
+  ]
+}
